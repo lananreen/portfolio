@@ -5,12 +5,12 @@ export default {
     extend: {
       colors: {
         portfolio: {
-          about: "#CFE3E1",         
-          skills: "#DCE9CE",        
-          projects: "#DED0A6",      
-          certifications: "#DEC4C6",
-          accent: "#6E9C93",        
-          yellow: "#F1E19A",        
+          about: "#FFFFFF",
+          skills: "#F5F0D7",
+          projects: "#FFFFFF",
+          certifications: "#F5F0D7",
+          accent: "#9CA3AF",
+          yellow: "#F1E19A",
         },
       },
       borderRadius: {

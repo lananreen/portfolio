@@ -1,10 +1,10 @@
-export default function AboutSection() {
+export default function About() {
   return (
     <section
       id="about"
-      className="relative flex min-h-[calc(100vh-5rem)] flex-col bg-portfolio-about px-6 pb-10 pt-6 md:px-16"
+      className="relative flex min-h-screen flex-col bg-portfolio-about px-6 pb-10 pt-6 md:px-16"
     >
-      <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-10 pt-8 md:flex-row md:items-start">
+      <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col items-center justify-center gap-10 md:flex-row md:items-center">
         <div className="aspect-[4/5] w-full max-w-sm shrink-0 rounded-2xl border-4 border-portfolio-accent bg-neutral-300 md:w-80" />
 
         <div className="flex-1">
