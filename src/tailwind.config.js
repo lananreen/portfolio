@@ -5,11 +5,11 @@ export default {
     extend: {
       colors: {
         portfolio: {
-          about: "#FFFFFF",
-          skills: "#F5F0D7",
-          projects: "#FFFFFF",
-          certifications: "#F5F0D7",
-          accent: "#9CA3AF",
+          about: "#080808",
+          skills: "#080808",
+          projects: "#080808",
+          certifications: "#080808",
+          accent: "#FFFFFF",
           yellow: "#F1E19A",
         },
       },

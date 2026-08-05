@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from "react";
-import FolderTab from "./FolderTab";
+import { useCallback, useEffect, useRef, useState } from "react";
 import ArrowButton from "./ArrowButton";
 import BrowserMockup from "./BrowserMockup";
 import { PROJECTS } from "../data/projects";
@@ -20,6 +19,12 @@ export default function ProjectsSection() {
 
   useEffect(() => () => clearTimeout(timeoutRef.current), []);
 
+  const closeLightbox = useCallback(() => {
+    if (lightbox !== "open") return;
+    setLightbox("closing");
+    timeoutRef.current = setTimeout(() => setLightbox("closed"), 250);
+  }, [lightbox]);
+
   useEffect(() => {
     const handleKey = (e) => {
       if (e.key === "Escape") closeLightbox();
@@ -32,16 +37,10 @@ export default function ProjectsSection() {
       document.removeEventListener("keydown", handleKey);
       document.body.style.overflow = "";
     };
-  }, [lightbox]);
+  }, [lightbox, closeLightbox]);
 
   const openLightbox = () => {
     if (images[imageIndex].src) setLightbox("open");
-  };
-
-  const closeLightbox = () => {
-    if (lightbox !== "open") return;
-    setLightbox("closing");
-    timeoutRef.current = setTimeout(() => setLightbox("closed"), 250);
   };
 
   const navigate = (dir) => {
@@ -75,9 +74,8 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative flex min-h-screen flex-col bg-portfolio-projects px-6 pt-6 md:px-16"
+      className="relative flex min-h-screen flex-col bg-portfolio-projects px-6 pt-6 md:px-16 border-t border-white/[0.06]"
     >
-      <FolderTab label="Projects" arrow="↵" side="right" bgClassName="bg-portfolio-projects" />
 
       <div className="mx-auto flex w-full max-w-[90rem] flex-1 items-center gap-10 pb-16 pt-10">
         <div className="flex flex-1 flex-col">
@@ -109,7 +107,7 @@ export default function ProjectsSection() {
             {images.map((_, i) => (
               <span
                 key={i}
-                className={`h-2.5 w-2.5 rounded-full ${i === imageIndex ? "bg-neutral-600" : "bg-neutral-400"}`}
+                className={`h-2.5 w-2.5 rounded-full ${i === imageIndex ? "bg-white/60" : "bg-white/20"}`}
               />
             ))}
           </div>
@@ -123,10 +121,10 @@ export default function ProjectsSection() {
                 type="button"
                 onClick={() => selectProject(project.id)}
                 aria-pressed={project.id === activeProjectId}
-                className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 ${
+                className={`rounded-lg border px-3 py-1.5 text-sm font-medium transition-all hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black ${
                   project.id === activeProjectId
-                    ? "bg-neutral-400 text-neutral-900"
-                    : "bg-neutral-300 text-neutral-700 hover:brightness-95"
+                    ? "border-white/30 bg-white/20 backdrop-blur-md text-white shadow-lg"
+                    : "border-white/10 bg-white/10 backdrop-blur-md text-white/60 hover:bg-white/15 hover:border-white/20"
                 }`}
               >
                 {project.buttonLabel}
@@ -138,12 +136,12 @@ export default function ProjectsSection() {
             href={activeProject.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 text-2xl font-bold text-neutral-800 transition-all hover:scale-105 hover:text-portfolio-accent inline-block"
+            className="mt-4 text-2xl font-bold text-white transition-all hover:scale-105 inline-block"
           >
             {activeProject.name}
           </a>
 
-          <p className="mt-4 text-neutral-700">
+          <p className="mt-4 text-white/60">
             {activeProject.description}
           </p>
         </div>

@@ -9,7 +9,7 @@ export default function ArrowButton({ direction = "left", onClick, disabled }) {
       onClick={onClick}
       disabled={disabled}
       aria-label={direction === "left" ? "Previous screenshot" : "Next screenshot"}
-      className="shrink-0 rounded-full p-2 text-neutral-400 transition-all hover:scale-110 hover:text-neutral-600 disabled:cursor-not-allowed disabled:opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2"
+      className="shrink-0 rounded-full border border-white/15 bg-white/10 backdrop-blur-md p-2 text-white/70 shadow-lg transition-all hover:scale-110 hover:text-white hover:border-white/30 hover:bg-white/15 disabled:cursor-not-allowed disabled:opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
     >
       <Icon size={40} strokeWidth={2.5} aria-hidden="true" />
     </button>
